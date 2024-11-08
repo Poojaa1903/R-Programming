@@ -1,0 +1,525 @@
+1)Create vector with elements from 10 to 20 incrementing by 0.1
+
+s=seq(10,20,by=0.1)
+print(s)
+
+2)Print even number between 10 and 20 
+
+even=seq(10,20,by=2)
+print(even)
+
+3)Print odd number between 10 and 20 
+
+odd=seq(11,20,by=2)
+print(odd)
+
+4)Print multiple of 7 from 7 to 100
+
+multiple=seq(7,100,by=7)
+print(multiple)
+
+5) Create a vector and store first 5 multiple of 5, first 5 multiple of 7, 
+and first 5 multiple of 16 in it.
+
+s=c(seq(5,25,5),seq(7,35,7),seq(16,80,16))
+s
+
+6) Create three vectors and merge into a single vector
+
+a=c("a","b","c")
+b=c("4",5,6,5)
+c=c(TRUE,FALSE)
+d=c(a,b,c)
+print(d)
+
+7) Create a vector "F" store any 50 elements in it and create another vector "J" and store random 5 positions till 50 in it and then access elements from F with specified position in J
+
+F=c(1:50)
+J=c(33,45,12,32,10)
+F[J]
+
+
+8) Create a vector V<-c(6,2,9,1,8,7), identify elements greater then 5 and replace value less than 5 with 0
+
+v<-c(6,2,9,1,8,7)
+v[v>5]
+v[v<5]=0
+print(v)
+
+9) Create a vector v=c(5,8,2,10,15,3,12), sort the given vector into ascending and descending order and extract the elements that are in odd position. Calculate the sum of extracted elements
+
+v=c(5,8,2,10,15,3,12)
+sort(v)
+sort(v,decreasing=TRUE)
+a=v[seq(1,length(v),2)]
+a
+sum(a)
+
+10) Create a 2*3 matrix A with values from 1 to 6 and a 3*2 matrix B with values from 6 to 1. Perform matrix multiplication of A&B. Verify if the result is a square matrix
+
+M=matrix(1:6,2,3,TRUE);M
+M1=matrix(6:1,3,2,TRUE);M1
+t=M%*%M1
+t
+dim(t)
+nrow(t)==ncol(t)
+
+11) Create a vector('hello','i','am',24,50,60,45,'rrr'), check if "am" character is present in the vector or not and create the matrix of same vector having 2 rows and 4 columns
+
+v<-c('hello','i','am',24,50,60,45,'rrr')
+which((v=='am'))
+m=matrix(v,nrow=2,ncol=4,TRUE)
+m
+
+
+
+12) Create a 5*5 matrix "u" with square of first 25 natural numbers. Extract the sub matrix consisting of the second & third rows and the second & third columns. Set the diagonal elements of "u" to zero
+
+u=matrix((1:25)^2,5,5,TRUE)
+u
+u[2:3,2:3]
+diag(u)=0
+u
+
+13) Create a data frame "df"with columns "ID","Name","Age". Add 20 entries in it. Rename the"Name" Column to "FullName". Drop the ID column from the dataframe
+  
+ID=1:20
+set.seed(20)
+Age=sample(20:40,20)
+Name=c("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T")
+
+d2=data.frame(ID,Name,Age)
+d2
+
+colnames(d2)[2]<-"FullName"
+d2
+
+d2$ID=NULL
+d2
+
+14) Create a dataframe "Sales" with columns "Product" (5 Unique Names) and "Price" (random value between 10 & 50). Add a new column "Discount" that is 10% of the price. Create another column "FinalPrice" by subtracting "Discount" from "Price" 
+
+Product=c("TV","Speaker","Water Purifier","Bed","Fan")
+Price=sample(10:50,5)
+Sales=data.frame(Product,Price)
+Sales
+
+Sales$Discount=0.10*Price
+Sales
+Sales$FinalPrice=Sales$Price-Sales$Discount
+Sales
+15) Create a dataframe Employee with Name,Age and Salary columns for 10 employees. Filter rows where age is above 30. Select only the name and salary columns. Count the number of employees having salary greater than 50,000
+
+Name=c("Srushti","Pooja","Rushikesh","Vaishanvi","Riya","Akash","Abhi","Vallabh","Priya","Poonam")
+Age=sample(20:40,10)
+Salary=sample(20000:100000,10)
+Employee=data.frame(Name,Age,Salary)
+Employee
+
+above=Employee[Employee$Age>30,]
+above
+name=Employee[,c("Name","Salary")]
+name
+salary=sum(Employee$Salary>50000)
+salary
+
+16) Create a dataframe Employee with Name,Age and Salary columns for 10 employees and export the dataframe Employee in csv format
+
+Name=c("Srushti","Pooja","Rushikesh","Vaishanvi","Riya","Akash","Abhi","Vallabh","Priya","Poonam")
+Age=sample(20:40,10)
+Salary=sample(20000:100000,10)
+Employee=data.frame(Name,Age,Salary)
+
+write.csv(Employee,file="Employee.csv") #creates new file in the working directory
+
+17) Create a 4*4*4 array "arr" filled with numbers from 1:64. Replace all values in the fourth layer with zeroes. Extract a 2*2*2 sub-array from the two-left corner of "arr" 
+
+arr<-array(1:64,dim=c(4,4,4))
+arr
+arr[,,4]=0 #4th layer is 4th matrix
+arr
+arr1 <- arr[1:2, 1:2, 1:2]
+arr1
+
+18) Take 9 numeric values from the user and store it in matrix
+
+num<-matrix(scan(nmax=9),nrow=3,ncol=3,byrow = TRUE)
+num
+
+19) Create a vector by taking age as an input from 5 of your classmates. Ask the user to enter the rows and columns for a matrix. Take element for each row using scan and fill the matrix
+
+age=scan(nmax=5)
+
+nrow=scan(nmax=1)
+ncol=scan(nmax=1)
+m=matrix(scan(nmax=nrow*ncol),nrow,ncol,byrow=TRUE)
+m
+
+20) Use scan to take a 10 numeric inputs from the user, representing their test scores.Store these scores in vector scores. Calculate and print the average of the scores. Count and print how many scores are above 80.
+
+scores=scan(nmax=10)
+vector<-c(scores)
+vector
+
+average=mean(scores)
+average
+
+count<-sum(scores>80)
+count
+
+21) Check whether the number is even or odd using control statement
+
+x<-as.numeric(readline("Enter a number: "))
+
+if (x%%2==0) {
+  print(paste(x,"is an even number"))
+}else if(x%%2!=0){
+  print(paste(x,"is an odd number"))
+}else{
+  print(paste(x,"is neither odd nor even"))
+}
+22) Take a number and without using loops tell if it is prime or not 
+
+x <- 97
+divisors <- 2:100
+
+if (x < 2) {
+  print("Not a prime number")
+} else if (all(x %% divisors[divisors < x] != 0)) {
+  print("Prime number")
+} else {
+  print("Not a prime number")
+}
+
+23) Print Multiplication table of 7 upto 7*22
+
+for (i in 1:22) {
+  print(paste(7,"*",i,"=",7*i))
+}
+
+24) Print 1,1.5,2,2.5,.....till 10 using loop
+
+for(i in seq(1,10,0.5)){
+  print(i)
+}
+
+#OR
+
+for(i in 1:10){
+  print(i)
+  print(i+0.5)
+}
+
+25) Print sum of first n natural numbers using loop
+
+num=100
+sum=0
+while(num){
+  sum=sum+num
+  num=num-1
+}
+sum
+
+
+#OR
+
+n=20
+sum=0
+for(i in 1:n){
+  sum=sum+i
+}
+sum
+
+26)Print multiplication table of 7 upto 7*22 using repeat statement
+
+x=1
+repeat{
+  print(paste("7 *" ,x, "=",7*x))
+  x=x+1
+  if(x>22){
+    break
+  }
+}
+
+27) Print odd numbers using next statement
+
+x=1:17
+
+for (i in x){
+  if(i%%2==0){
+    next
+  }
+  print(i)
+}
+
+28) Take two numbers from the user and write user defined function to create a calculator
+
+x=as.numeric(readline("Enter the first number: "))
+y=as.numeric(readline("Enter the second number: "))
+operation=as.numeric(readline("Enter the operation you want to perform: "))
+
+calculator<-function(x,y,operation){
+  result=switch(operation,
+                "1"=x+y,
+                "2"=x-y,
+                "3"=x*y,
+                "4"=if(x>y){
+                  x/y}else if(y>x){
+                    y/x}else{
+                      print("Invalid Operation")
+                  })
+  print(result)
+}
+calculator(x,y,operation)
+
+29) Take a whole number as an input from the user and write code for user defined function to print its factorial
+
+factorial<-function(x){
+  fact=1
+  for(i in seq(x,1)){
+    fact=fact*i
+  }
+  return(fact)
+}
+x=scan(nmax=1)
+if(x<0){
+  print("Negative Numbers are not allowed, try again!!!")
+}else{
+  result=factorial(x)
+  print(result)
+}
+
+30) Write a user defined function to calculate simple interest and compound interest
+
+calculate<-function(principal,time,rate,compounding_frequency=1){
+
+  simple_interest <- (principal * rate * time) / 100
+
+  compound_interest <- principal * (1 + (rate / (100 * 
+compounding_frequency)))^(compounding_frequency * time) - principal
+
+  return(list(Simple_Interest=simple_interest,
+Compound_Interest=compound_interest))
+}
+
+principal <- as.numeric(readline("Enter the principal amount: "))
+rate <- as.numeric(readline("Enter the rate of interest (in %): "))
+
+time <- as.numeric(readline("Enter the time period (in years): "))
+
+compounding_frequency <- as.numeric(readline("Enter the number of times interest is compounded per year (default is 1): "))
+
+results=calculate(principal,time,rate,compounding_frequency)
+
+cat("Simple Interest:", results$Simple_Interest, "\n")
+cat("Compound Interest:", results$Compound_Interest, "\n")
+
+31) Write user define function in R to take temperature from user in degree celsius and convert in kelvin and fahrenheit
+
+degree<-function(celsius){
+  fahrenheit=(celsius*9/5)+32
+  kelvin=(celsius+273.15)
+  return(list(fahrenheit_result=fahrenheit,kelvin_result=kelvin))
+}
+
+celsius=as.numeric(readline("Enter a degree in celsius: "))
+result=degree(celsius)
+
+cat("Celsius to Fahrenheit: ",result$fahrenheit,"\n")
+cat("Celsius to Fahrenheit: ",result$kelvin,"\n")
+
+32)Write a function "count_elements" that accepts a numeric vector and counts the number of positive,negative and zero elements.
+Test the function on vector c(-3,-2,01,0,1,4,9)
+
+count_elements<-function(vector){
+  positive=0
+  negative=0
+  zero=0
+  for (i in vector){
+    if(i>0){
+      positive=positive+1
+    }else if(i<0){
+      negative=negative+1
+    }else if(i==0){
+      zero=zero+1
+    }
+  }
+  return(list(positive_values=positive,negative_values=negative,zero_values=zero))
+}
+
+vector<-c(-3,-2,0,1,0,1,4,9)
+result=count_elements(vector)
+
+cat("Positive:",result$positive_values,"\n")
+cat("Negative:",result$negative_values,"\n")
+cat("Zero:",result$zero_values,"\n")
+
+33) Define a function to take four numbers from the user and print the number in ascending order without using sort
+
+sort=function(v){
+  l=length(v)
+  for (i in 1:l){
+    for (j in 1:(l-1)){
+      if(v[j+1]<v[j]){
+        t=v[j]
+        v[j]=v[j+1]
+        v[j+1]=t
+      }
+    }
+  }
+  return(v)
+}
+sort(c(5,4,3,2,1))
+
+34) In a diamond dataset increase price of cut=Fair by 200 and rest remains the same
+
+a=diamonds %>% filter(cut=="Fair") %>% mutate(price=price+200)
+View(a)
+
+#iris:
+
+35.A) Load the inbuilt iris dataset and display first 15 rows 
+
+head(iris,15)
+
+35.B) What is the structure of the dataset?
+
+structure(iris)
+
+36.A) Filter the dataset to show only the species "Setosa"
+
+iris %>% filter(Species=="setosa")
+
+36.B) How many rows are there for species setosa
+
+a=count(iris %>% filter(Species=="setosa"))
+
+36.C) Display the first 10 rows of the filtered dataset
+
+head(a,10)
+
+37.A) Select Sepal.Length and Species columns
+
+iris %>% select(Sepal.Length,Species)
+
+37.B) Create a new dataframe called setosa_sepal with these columns 
+
+setosa_sepal=iris %>% select(Sepal.Length,Species)
+setosa_sepal
+
+38) Create a new column Sepal.Area in the Iris dataset that calculates the area of sepal(Area=length*width)
+
+iris %>% mutate(Sepal.Area = Sepal.Length*Sepal.Width)
+
+39.A) Group the dataset by Species and calculate the Sepal.length and Sepal.Width for each species
+
+iris %>% group_by(Species) %>% summarize(Sepal_Length=mean(Sepal.Length),Sepal_Width=mean(Sepal.Width))%>% ungroup()
+
+39.B) Store the summarized data in a new data frame called iris_summary. Export iris_summary in .csv file
+
+iris_summary=iris %>% group_by(Species) %>% summarize(Sepal_Length=mean(Sepal.Length),Sepal_Width=mean(Sepal.Width))
+
+write.csv(iris_summary, "iris_summary.csv", row.names = FALSE)
+
+40) Arrange the iris dataset by Sepal.Length in descending
+
+iris %>% arrange(desc(Sepal.Length))
+
+41) Find unique species in the dataset
+
+unique(iris$Species)
+
+#mtcars:
+
+42)Load the mtcars dataset and display first 7 rows
+
+View(mtcars)
+head(mtcars,7)
+
+43)Filter the dataset to show only cars with mpg greater than 20
+
+mtcars %>% filter(mpg>20)
+
+44)Create a new data frame calles selected_cars by selecting mpg,hp & cyl columns
+
+selected_cars =mtcars %>% select(mpg,hp,cyl)
+selected_cars
+
+45)Create a new column hp_per_cyl that calculates horsepower per cylinder
+
+mtcars %>% mutate(hp_per_cyl=hp/cyl)
+
+46)Group the dataset by cyl and calculate the average mpg & hp for each group
+
+mtcars %>%group_by(cyl)%>%summarize(MPG=mean(mpg),Horsepower=mean(mpg))%>%ungroup()
+
+47)Count the number of cars for each number of cylinder
+
+mtcars %>%group_by(cyl)%>%summarize(no_of_cars=n())%>%ungroup()
+48)Arrange the dataset by mpg in descending order and export this dataframe in .txt file with separator as "$"
+
+desc_mpg=mtcars%>%arrange(desc(mpg))
+write.table(desc_mpg,"desc_mpg.txt",sep= "$")
+
+49)Group the dataset by gear and calculate the total number of cars and average mpg
+
+mtcars %>% group_by(gear)%>% summarize(no_of_cars=n(),MPG=mean(mpg))%>%ungroup()
+
+50)Create a new column "Performance" that categorise cars based on their mpg into low, medium and high(<20 = low, between 20 & 25 = medium, >25 = high)
+
+#?case_when
+
+mtcars%>%mutate(Performance=case_when(
+  mpg<20~"low",
+  mpg>=20 & mpg<25 ~ "medium",
+  mpg>=25 ~"high"
+))
+
+51)Introduce some NA values into the hp column, calculate the total number of missing values and then remove those missing values
+
+set.seed(0)
+mtcars$hp[sample(1:nrow(mtcars),5)]<-NA
+mtcars
+total_na_hp <- sum(is.na(mtcars$hp))
+total_na_hp
+mtcars_remove<- mtcars[!is.na(mtcars$hp), ]
+mtcars_remove
+
+52)Filter the dataset to show cars with mpg greater than 20 and hp less than 100
+
+mtcars%>%filter(mpg>20 & hp<100)
+
+
+
+
+53)Joins:
+
+#Data Frame 1
+df1 = data.frame(CustomerId = c(1:6), Product = c("Oven","Television","Mobile","WashingMachine","Lightings","Ipad"))
+df1 
+
+#Data Frame 2
+df2 = data.frame(CustomerId = c(2, 4, 6, 7, 8), State = c("California","Newyork","Santiago","Texas","Indiana")) 
+df2 
+
+#Inner Join
+#### Inner Join using merge function
+df = merge(x=df1,y=df2,by="CustomerId")
+df
+
+# Outer Join
+df = merge(x=df1,y=df2,by="CustomerId",all=TRUE)
+df
+
+#Left Join
+df = merge(x=df1,y=df2,by="CustomerId",all.x=TRUE)
+df
+
+###### Right Join
+df = merge(x=df1,y=df2,by="CustomerId",all.y=TRUE)
+df
+
+#Cross Join
+
+df = merge(x = df1, y = df2, by = NULL)
+df
