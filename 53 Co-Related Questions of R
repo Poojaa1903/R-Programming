@@ -1,19 +1,19 @@
-1)Create vector with elements from 10 to 20 incrementing by 0.1
+1) Create vector with elements from 10 to 20 incrementing by 0.1
 
 s=seq(10,20,by=0.1)
 print(s)
 
-2)Print even number between 10 and 20 
+2) Print even number between 10 and 20 
 
 even=seq(10,20,by=2)
 print(even)
 
-3)Print odd number between 10 and 20 
+3) Print odd number between 10 and 20 
 
 odd=seq(11,20,by=2)
 print(odd)
 
-4)Print multiple of 7 from 7 to 100
+4) Print multiple of 7 from 7 to 100
 
 multiple=seq(7,100,by=7)
 print(multiple)
@@ -37,7 +37,6 @@ print(d)
 F=c(1:50)
 J=c(33,45,12,32,10)
 F[J]
-
 
 8) Create a vector V<-c(6,2,9,1,8,7), identify elements greater then 5 and replace value less than 5 with 0
 
@@ -70,8 +69,6 @@ v<-c('hello','i','am',24,50,60,45,'rrr')
 which((v=='am'))
 m=matrix(v,nrow=2,ncol=4,TRUE)
 m
-
-
 
 12) Create a 5*5 matrix "u" with square of first 25 natural numbers. Extract the sub matrix consisting of the second & third rows and the second & third columns. Set the diagonal elements of "u" to zero
 
@@ -108,6 +105,7 @@ Sales$Discount=0.10*Price
 Sales
 Sales$FinalPrice=Sales$Price-Sales$Discount
 Sales
+
 15) Create a dataframe Employee with Name,Age and Salary columns for 10 employees. Filter rows where age is above 30. Select only the name and salary columns. Count the number of employees having salary greater than 50,000
 
 Name=c("Srushti","Pooja","Rushikesh","Vaishanvi","Riya","Akash","Abhi","Vallabh","Priya","Poonam")
@@ -178,6 +176,7 @@ if (x%%2==0) {
 }else{
   print(paste(x,"is neither odd nor even"))
 }
+
 22) Take a number and without using loops tell if it is prime or not 
 
 x <- 97
@@ -220,7 +219,6 @@ while(num){
 }
 sum
 
-
 #OR
 
 n=20
@@ -230,7 +228,7 @@ for(i in 1:n){
 }
 sum
 
-26)Print multiplication table of 7 upto 7*22 using repeat statement
+26) Print multiplication table of 7 upto 7*22 using repeat statement
 
 x=1
 repeat{
@@ -328,7 +326,7 @@ result=degree(celsius)
 cat("Celsius to Fahrenheit: ",result$fahrenheit,"\n")
 cat("Celsius to Fahrenheit: ",result$kelvin,"\n")
 
-32)Write a function "count_elements" that accepts a numeric vector and counts the number of positive,negative and zero elements.
+32) Write a function "count_elements" that accepts a numeric vector and counts the number of positive,negative and zero elements.
 Test the function on vector c(-3,-2,01,0,1,4,9)
 
 count_elements<-function(vector){
@@ -378,31 +376,34 @@ View(a)
 
 #iris:
 
-35.A) Load the inbuilt iris dataset and display first 15 rows 
+35)
+A) Load the inbuilt iris dataset and display first 15 rows 
 
 head(iris,15)
 
-35.B) What is the structure of the dataset?
+B) What is the structure of the dataset?
 
 structure(iris)
 
-36.A) Filter the dataset to show only the species "Setosa"
+36)
+A) Filter the dataset to show only the species "Setosa"
 
 iris %>% filter(Species=="setosa")
 
-36.B) How many rows are there for species setosa
+B) How many rows are there for species setosa
 
 a=count(iris %>% filter(Species=="setosa"))
 
-36.C) Display the first 10 rows of the filtered dataset
+C) Display the first 10 rows of the filtered dataset
 
 head(a,10)
 
-37.A) Select Sepal.Length and Species columns
+37)
+A) Select Sepal.Length and Species columns
 
 iris %>% select(Sepal.Length,Species)
 
-37.B) Create a new dataframe called setosa_sepal with these columns 
+B) Create a new dataframe called setosa_sepal with these columns 
 
 setosa_sepal=iris %>% select(Sepal.Length,Species)
 setosa_sepal
@@ -411,11 +412,12 @@ setosa_sepal
 
 iris %>% mutate(Sepal.Area = Sepal.Length*Sepal.Width)
 
-39.A) Group the dataset by Species and calculate the Sepal.length and Sepal.Width for each species
+39)
+A) Group the dataset by Species and calculate the Sepal.length and Sepal.Width for each species
 
 iris %>% group_by(Species) %>% summarize(Sepal_Length=mean(Sepal.Length),Sepal_Width=mean(Sepal.Width))%>% ungroup()
 
-39.B) Store the summarized data in a new data frame called iris_summary. Export iris_summary in .csv file
+B) Store the summarized data in a new data frame called iris_summary. Export iris_summary in .csv file
 
 iris_summary=iris %>% group_by(Species) %>% summarize(Sepal_Length=mean(Sepal.Length),Sepal_Width=mean(Sepal.Width))
 
@@ -431,41 +433,42 @@ unique(iris$Species)
 
 #mtcars:
 
-42)Load the mtcars dataset and display first 7 rows
+42) Load the mtcars dataset and display first 7 rows
 
 View(mtcars)
 head(mtcars,7)
 
-43)Filter the dataset to show only cars with mpg greater than 20
+43) Filter the dataset to show only cars with mpg greater than 20
 
 mtcars %>% filter(mpg>20)
 
-44)Create a new data frame calles selected_cars by selecting mpg,hp & cyl columns
+44) Create a new data frame calles selected_cars by selecting mpg,hp & cyl columns
 
 selected_cars =mtcars %>% select(mpg,hp,cyl)
 selected_cars
 
-45)Create a new column hp_per_cyl that calculates horsepower per cylinder
+45) Create a new column hp_per_cyl that calculates horsepower per cylinder
 
 mtcars %>% mutate(hp_per_cyl=hp/cyl)
 
-46)Group the dataset by cyl and calculate the average mpg & hp for each group
+46) Group the dataset by cyl and calculate the average mpg & hp for each group
 
 mtcars %>%group_by(cyl)%>%summarize(MPG=mean(mpg),Horsepower=mean(mpg))%>%ungroup()
 
-47)Count the number of cars for each number of cylinder
+47) Count the number of cars for each number of cylinder
 
 mtcars %>%group_by(cyl)%>%summarize(no_of_cars=n())%>%ungroup()
-48)Arrange the dataset by mpg in descending order and export this dataframe in .txt file with separator as "$"
+
+48) Arrange the dataset by mpg in descending order and export this dataframe in .txt file with separator as "$"
 
 desc_mpg=mtcars%>%arrange(desc(mpg))
 write.table(desc_mpg,"desc_mpg.txt",sep= "$")
 
-49)Group the dataset by gear and calculate the total number of cars and average mpg
+49) Group the dataset by gear and calculate the total number of cars and average mpg
 
 mtcars %>% group_by(gear)%>% summarize(no_of_cars=n(),MPG=mean(mpg))%>%ungroup()
 
-50)Create a new column "Performance" that categorise cars based on their mpg into low, medium and high(<20 = low, between 20 & 25 = medium, >25 = high)
+50) Create a new column "Performance" that categorise cars based on their mpg into low, medium and high(<20 = low, between 20 & 25 = medium, >25 = high)
 
 #?case_when
 
@@ -475,7 +478,7 @@ mtcars%>%mutate(Performance=case_when(
   mpg>=25 ~"high"
 ))
 
-51)Introduce some NA values into the hp column, calculate the total number of missing values and then remove those missing values
+51) Introduce some NA values into the hp column, calculate the total number of missing values and then remove those missing values
 
 set.seed(0)
 mtcars$hp[sample(1:nrow(mtcars),5)]<-NA
@@ -485,14 +488,11 @@ total_na_hp
 mtcars_remove<- mtcars[!is.na(mtcars$hp), ]
 mtcars_remove
 
-52)Filter the dataset to show cars with mpg greater than 20 and hp less than 100
+52) Filter the dataset to show cars with mpg greater than 20 and hp less than 100
 
 mtcars%>%filter(mpg>20 & hp<100)
 
-
-
-
-53)Joins:
+53) Joins:
 
 #Data Frame 1
 df1 = data.frame(CustomerId = c(1:6), Product = c("Oven","Television","Mobile","WashingMachine","Lightings","Ipad"))
